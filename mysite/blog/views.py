@@ -58,5 +58,5 @@ def register_user(request):
             serializer.save()
             return Response({"message": "User Created Successfully"}, status = status.HTTP_201_CREATED)
         else:
-            return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
+            return Response(serializer.errors,{"message": "User Creation Failed"}, status= status.HTTP_400_BAD_REQUEST)
 
