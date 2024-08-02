@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path
 from blog import views
 from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
+    TokenObtainPairView,    
     TokenRefreshView,
     TokenVerifyView
 )
@@ -27,6 +27,7 @@ from rest_framework_simplejwt.views import (
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('posts/', views.post_list),
+    path('register/', views.register_user),
     path('posts/<int:id>/', views.post_get),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),

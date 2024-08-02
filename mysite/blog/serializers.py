@@ -12,10 +12,11 @@ class PostSerializer(serializers.ModelSerializer):
 class CustomUserSerialzer(serializers.ModelSerializer):
         class Meta:
             model = CustomUser
-            fields = ['id', 'name','first_name','last_name', 'password']
+            fields = ['id','email','first_name','last_name', 'password']
             extra_kwargs = {'password':{'write_only': True}}
 
         def create(self, validated_data):
             user = CustomUser.objects.create_user(email=validated_data['email'], password=validated_data['password'], first_name = validated_data.get('first_name', ''), last_name = validated_data.get('last_name', ''))
             return user
-        
+     
+
